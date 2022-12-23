@@ -33,9 +33,15 @@ Resources:
       SecurityGroups:
         - Ref: InstanceSecurityGroup
       KeyName: udacity
-      ImageId: ami-0530ca8899fac469f
+      ImageId: ami-0ecc74eca1d66d8a6 
       Tags:
         - Key: Name
           Value: !Sub backend-${ID}
         - Key: Project
           Value: Udapeople
+
+  InstanceEIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+      InstanceId: !Ref EC2Instance
